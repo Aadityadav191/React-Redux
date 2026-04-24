@@ -5,6 +5,7 @@ import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import Services from "./Pages/Services";
 import Academics from "./Pages/Academics";
+import Achievements from "./Pages/Achievements";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -20,6 +21,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/academics" element={<Academics />} />
+          <Route path="/achievements" element={<Achievements />} />
+
         </Routes>
       </div>
       <Footer />

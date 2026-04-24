@@ -81,6 +81,17 @@ function Navbar() {
               </NavLink>
             </li>
 
+            <li className="nav-item">
+              <NavLink
+                to="/achievements"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active fw-semibold" : "nav-link"
+                }
+              >
+                Our Achievements
+              </NavLink>
+            </li>
+  
           </ul>
 
           {/* Right Side Buttons */}

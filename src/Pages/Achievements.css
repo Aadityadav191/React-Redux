@@ -1,0 +1,32 @@
+/* HERO */
+.achievement-hero {
+  height: 60vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://www.aksharaaschool.edu.np/assets/aksharaa-school-uNZ4k0oj.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* TOPPER CARD */
+.topper-card {
+  background: #fff;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.topper-card:hover {
+  transform: translateY(-8px);
+}
+
+/* GENERAL ACHIEVEMENT CARD */
+.achievement-card {
+  background: #fff;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.achievement-card:hover {
+  transform: translateY(-8px);
+}
