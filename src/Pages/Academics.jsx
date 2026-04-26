@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Academics() {
   const classes = [
@@ -24,25 +25,51 @@ export default function Academics() {
     },
   ];
 
+  // Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <div className="academics-page">
-
       {/* HERO */}
       <div className="academics-hero text-white d-flex align-items-center text-center">
-        <div className="container">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container"
+        >
           <h1 className="display-3 fw-bold text-success">Our Academics</h1>
           <p className="lead text-success">
             Building strong foundations for lifelong learning.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="container my-5">
-
         {/* PRINCIPAL MESSAGE */}
-        <div className="row align-items-center g-5 mb-5">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="row align-items-center g-5 mb-5"
+        >
           <div className="col-lg-5 text-center">
-            <img
+            <motion.img
+              whileHover={{ scale: 1.05 }}
               src="https://republicaimg.nagariknewscdn.com/shared/web/uploads/media/Shamsher-Bahadur-Thapa.jpg"
               alt="Principal"
               className="img-fluid rounded shadow"
@@ -64,17 +91,29 @@ export default function Academics() {
               — Mr. Nichal Chaulagai, President
             </h6>
           </div>
-        </div>
+        </motion.div>
 
         {/* CURRICULUM TABLE */}
-        <div className="text-center mb-4">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center mb-4"
+        >
           <h2 className="fw-bold text-success">Curriculum Overview</h2>
           <p className="text-muted">
             Structured learning from Nursery to Grade 10
           </p>
-        </div>
+        </motion.div>
 
-        <div className="table-responsive mb-5">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="table-responsive mb-5"
+        >
           <table className="table table-bordered table-hover text-center curriculum-table shadow-sm">
             <thead className="table-success">
               <tr>
@@ -83,21 +122,26 @@ export default function Academics() {
                 <th>Subjects</th>
               </tr>
             </thead>
-            <tbody>
+            <motion.tbody 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {classes.map((item, index) => (
-                <tr key={index}>
+                <motion.tr variants={fadeInUp} key={index}>
                   <td className="fw-semibold text-success">
                     {item.level}
                   </td>
                   <td>{item.name}</td>
                   <td>{item.subjects}</td>
-                </tr>
+                </motion.tr>
               ))}
-            </tbody>
+            </motion.tbody>
           </table>
-        </div>
+        </motion.div>
 
-        {/* SYLLABUS SECTION (IMPROVED GRID) */}
+        {/* SYLLABUS SECTION */}
         <div className="text-center mb-4">
           <h2 className="fw-bold text-success">Course & Syllabus</h2>
           <p className="text-muted">
@@ -105,7 +149,13 @@ export default function Academics() {
           </p>
         </div>
 
-        <div className="row g-4">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="row g-4"
+        >
           {[
             {
               title: "Languages",
@@ -132,15 +182,21 @@ export default function Academics() {
               desc: "Sports, arts, music, and personality growth.",
             },
           ].map((item, i) => (
-            <div className="col-md-4" key={i}>
-              <div className="syllabus-card p-4 h-100 text-center">
+            <motion.div 
+              variants={fadeInUp} 
+              className="col-md-4" 
+              key={i}
+            >
+              <motion.div 
+                whileHover={{ y: -10, boxShadow: "0px 10px 20px rgba(0,0,0,0.1)" }}
+                className="syllabus-card p-4 h-100 text-center bg-white rounded shadow-sm border-top border-success border-4"
+              >
                 <h5 className="text-success">{item.title}</h5>
                 <p className="text-muted small">{item.desc}</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-
+        </motion.div>
       </div>
     </div>
   );

@@ -1,53 +1,96 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
+  // Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
   return (
     <div className="contact-page">
       {/* HERO */}
       <div className="contact-hero d-flex align-items-center text-white text-center">
-        <div className="container">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="container"
+        >
           <h1 className="fw-bold display-4 text-success">Contact Us</h1>
-          <p className="lead  text-success">
+          <p className="lead text-success">
             We'd love to hear from you. Get in touch with AKSHARAA School.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <div className="container my-5">
         {/* CONTACT INFO */}
-        <div className="row g-4 text-center mb-5">
-          <div className="col-md-4">
-            <div className="contact-card p-4">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="row g-4 text-center mb-5"
+        >
+          <motion.div variants={fadeInUp} className="col-md-4">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="contact-card p-4 border rounded shadow-sm bg-white"
+            >
               <div className="fs-1 mb-2 text-success">📍</div>
               <h5>Address</h5>
               <p className="text-muted small">
                 AKSHARAA School, Kathmandu, Nepal
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="col-md-4">
-            <div className="contact-card p-4">
+          <motion.div variants={fadeInUp} className="col-md-4">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="contact-card p-4 border rounded shadow-sm bg-white"
+            >
               <div className="fs-1 mb-2 text-success">📞</div>
               <h5>Phone</h5>
               <p className="text-muted small">+977-9841508235</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="col-md-4">
-            <div className="contact-card p-4">
+          <motion.div variants={fadeInUp} className="col-md-4">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="contact-card p-4 border rounded shadow-sm bg-white"
+            >
               <div className="fs-1 mb-2 text-success">✉️</div>
               <h5>Email</h5>
               <p className="text-muted small">info@aksharaa.edu.np</p>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* FORM + MAP */}
         <div className="row g-5">
           {/* FORM */}
-          <div className="col-lg-6">
-            <div className="contact-form p-4 shadow-sm">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="col-lg-6"
+          >
+            <div className="contact-form p-4 shadow-sm border rounded bg-white">
               <h4 className="text-success mb-3">Send a Message</h4>
 
               <form>
@@ -83,25 +126,37 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                <button className="btn btn-success w-100">Send Message</button>
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="btn btn-success w-100"
+                >
+                  Send Message
+                </motion.button>
               </form>
             </div>
-          </div>
+          </motion.div>
 
           {/* MAP */}
-          <div className="col-lg-6">
-            <div className="map-container shadow-sm">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="col-lg-6"
+          >
+            <div className="map-container shadow-sm border rounded h-100" style={{ minHeight: "400px", overflow: "hidden" }}>
               <iframe
                 title="map"
                 src="https://maps.google.com/maps?q=Kathmandu&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, minHeight: "400px" }}
                 allowFullScreen=""
                 loading="lazy"
               ></iframe>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

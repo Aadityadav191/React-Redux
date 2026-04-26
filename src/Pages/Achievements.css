@@ -11,22 +11,14 @@
 .topper-card {
   background: #fff;
   border-radius: 15px;
-  transition: 0.3s;
+  /* Removed manual transition to let Framer Motion handle it smoothly */
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.topper-card:hover {
-  transform: translateY(-8px);
 }
 
 /* GENERAL ACHIEVEMENT CARD */
 .achievement-card {
   background: #fff;
   border-radius: 15px;
-  transition: 0.3s;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.achievement-card:hover {
-  transform: translateY(-8px);
+  border-left: 5px solid #198754; /* Added a small success border for style */
 }

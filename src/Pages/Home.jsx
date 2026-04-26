@@ -1,8 +1,8 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 
 export default function Home() {
- const teachers = [
+  const teachers = [
     {
       name: "miss Saradha paudel ",
       role: "Principal",
@@ -77,136 +77,181 @@ export default function Home() {
     },
   ];
 
+  // Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <div className="home-bg min-vh-100">
       <div className="container py-5">
         {/* Welcome Section */}
-        <div className="text-center mb-5">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center mb-5"
+        >
           <h1 className="display-4 fw-bold text-success">
-            Welcome to AKSHARAA  School
+            Welcome to Sahara National school
           </h1>
           <p className="lead text-dark">
             Empowering young minds for a brighter tomorrow. Our school fosters
             an environment of growth, creativity, and excellence.
           </p>
-          <img
+          <motion.img
+            whileHover={{ scale: 1.02 }}
             src="https://www.aksharaaschool.edu.np/assets/aksharaa-school-uNZ4k0oj.jpg"
             alt="School Building"
             className="img-fluid rounded shadow-sm mb-4"
           />
-        </div>
+        </motion.div>
 
-         {/* About Us Section */}
-        {/* Heading Section */}
-      <div className="text-center mb-5">
-        <h2 className="fw-bold text-success display-6">About Us</h2>
-        <p className="lead text-secondary mx-auto" style={{ maxWidth: "700px" }}>
-          AKSHARAA  School is more than just a place for learning — it's a
-          community that nurtures curiosity, creativity, and leadership.
-          We are committed to building a strong foundation for future success.
-        </p>
-      </div>
+        {/* About Us Section */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center mb-5"
+        >
+          <h2 className="fw-bold text-success display-6">About Us</h2>
+          <p className="lead text-secondary mx-auto" style={{ maxWidth: "700px" }}>
+            Sahara National school is more than just a place for learning — it's a
+            community that nurtures curiosity, creativity, and leadership.
+            We are committed to building a strong foundation for future success.
+          </p>
+        </motion.div>
 
-      {/* Info Cards */}
-      <div className="row g-4">
-
-        {/* Mission */}
-        <div className="col-lg-4 col-md-6">
-          <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
-            <div className="mb-3 fs-1 text-success">🎯</div>
-            <h5 className="fw-semibold mb-2">Our Mission</h5>
-            <p className="text-muted small">
-              To provide quality education and nurture every student’s
-              potential in a safe and inspiring environment with a balanced
-              focus on academics and personal growth.
-            </p>
-          </div>
-        </div>
-
-        {/* Academics */}
-        <div className="col-lg-4 col-md-6">
-          <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
-            <div className="mb-3 fs-1 text-success">📚</div>
-            <h5 className="fw-semibold mb-2">Academics</h5>
-            <p className="text-muted small">
-              Our curriculum ensures academic excellence along with
-              co-curricular development, helping students grow into
-              well-rounded individuals.
-            </p>
-          </div>
-        </div>
-
-        {/* Admissions */}
-        <div className="col-lg-4 col-md-6 mx-auto">
-          <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
-            <div className="mb-3 fs-1 text-success">🚀</div>
-            <h5 className="fw-semibold mb-2">Admissions</h5>
-            <p className="text-muted small">
-              Join our vibrant community! Admissions are open for the
-              upcoming academic session. Start your journey with us today.
-            </p>
-            <button className="btn btn-success mt-2 px-4">
-              Apply Now
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-       
-        {/* Faculty Section */}
-        <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Meet Our Dedicated Faculty</h2>
-          <div className="mt-2 h-1 w-20 bg-green-600 mx-auto rounded-full"></div>
-        </div>
-
-        {/* Small-size Teacher Grid */}
-        <div className="container my-5">
-      <div className="text-center mb-4">
-        <h2 className="display-6 text-success">Our Faculty</h2>
-      </div>
-
-      <div className="row">
-        {teachers.map((teacher, index) => (
-          <div
-            className="col-lg-3 col-md-4 col-sm-6 mb-4"
-            key={index}
-          >
-            <div className="card border-success shadow-sm h-100">
-              <img
-                src={teacher.img}
-                alt={teacher.name}
-                className="card-img-top"
-                style={{ height: "200px", objectFit: "cover" }}
-              />
-
-              <div className="card-body text-center">
-                <h6 className="text-success mb-1">
-                  {teacher.name}
-                </h6>
-                <p className="mb-1 small fw-bold">
-                  {teacher.role}
-                </p>
-                <p className="text-muted small">
-                  {teacher.desc}
-                </p>
-              </div>
+        {/* Info Cards */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="row g-4"
+        >
+          {/* Mission */}
+          <motion.div variants={fadeInUp} className="col-lg-4 col-md-6">
+            <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
+              <div className="mb-3 fs-1 text-success">🎯</div>
+              <h5 className="fw-semibold mb-2">Our Mission</h5>
+              <p className="text-muted small">
+                To provide quality education and nurture every student’s
+                potential in a safe and inspiring environment with a balanced
+                focus on academics and personal growth.
+              </p>
             </div>
+          </motion.div>
+
+          {/* Academics */}
+          <motion.div variants={fadeInUp} className="col-lg-4 col-md-6">
+            <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
+              <div className="mb-3 fs-1 text-success">📚</div>
+              <h5 className="fw-semibold mb-2">Academics</h5>
+              <p className="text-muted small">
+                Our curriculum ensures academic excellence along with
+                co-curricular development, helping students grow into
+                well-rounded individuals.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Admissions */}
+          <motion.div variants={fadeInUp} className="col-lg-4 col-md-6 mx-auto">
+            <div className="card h-100 border-0 shadow-sm about-card text-center p-4">
+              <div className="mb-3 fs-1 text-success">🚀</div>
+              <h5 className="fw-semibold mb-2">Admissions</h5>
+              <p className="text-muted small">
+                Join our vibrant community! Admissions are open for the
+                upcoming academic session. Start your journey with us today.
+              </p>
+              <button className="btn btn-success mt-2 px-4">
+                Apply Now
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Faculty Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">Meet Our Dedicated Faculty</h2>
+            <div className="mt-2 h-1 w-20 bg-green-600 mx-auto rounded-full"></div>
+          </motion.div>
+
+          <div className="container my-5">
+            <div className="text-center mb-4">
+              <h2 className="display-6 text-success">Our Faculty</h2>
+            </div>
+
+            <motion.div 
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="row"
+            >
+              {teachers.map((teacher, index) => (
+                <motion.div
+                  variants={fadeInUp}
+                  whileHover={{ y: -10 }}
+                  className="col-lg-3 col-md-4 col-sm-6 mb-4"
+                  key={index}
+                >
+                  <div className="card border-success shadow-sm h-100">
+                    <img
+                      src={teacher.img}
+                      alt={teacher.name}
+                      className="card-img-top"
+                      style={{ height: "200px", objectFit: "cover" }}
+                    />
+                    <div className="card-body text-center">
+                      <h6 className="text-success mb-1">{teacher.name}</h6>
+                      <p className="mb-1 small fw-bold">{teacher.role}</p>
+                      <p className="text-muted small">{teacher.desc}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        ))}
-      </div>
-    </div>
-      </div>
-    </section>
-        {/* Events Section */}
-        <div className="text-center mb-5">
+        </div>
+      </section>
+
+      {/* Events Section */}
+      <div className="container py-5">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center mb-5"
+        >
           <h2 className="display-5 text-success">Upcoming Events</h2>
-          <div className="row">
+          <div className="row mt-4">
             <div className="col-md-4 mb-4">
-              <div className="card border-success shadow-sm">
+              <motion.div whileHover={{ scale: 1.03 }} className="card border-success shadow-sm">
                 <div className="card-body">
                   <h5 className="card-title text-success">Science Fair</h5>
                   <p className="card-text">
@@ -219,11 +264,11 @@ export default function Home() {
                     className="card-img-top"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="col-md-4 mb-4">
-              <div className="card border-success shadow-sm">
+              <motion.div whileHover={{ scale: 1.03 }} className="card border-success shadow-sm">
                 <div className="card-body">
                   <h5 className="card-title text-success">Sports Day</h5>
                   <p className="card-text">
@@ -237,11 +282,11 @@ export default function Home() {
                     className="card-img-top"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="col-md-4 mb-4">
-              <div className="card border-success shadow-sm">
+              <motion.div whileHover={{ scale: 1.03 }} className="card border-success shadow-sm">
                 <div className="card-body">
                   <h5 className="card-title text-success">Cultural Fest</h5>
                   <p className="card-text">
@@ -255,20 +300,33 @@ export default function Home() {
                     className="card-img-top"
                   />
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
+
         {/* Contact Section */}
-        <div className="text-center">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center pb-5"
+        >
           <h2 className="display-5 text-success">Contact Us</h2>
           <p className="lead text-dark">
             Feel free to reach out for more information or to schedule a visit
             to our school.
           </p>
-          <button className="btn btn-success">Contact Us</button>
-        </div>
+          <motion.button 
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="btn btn-success px-5 py-2"
+          >
+            Contact Us
+          </motion.button>
+        </motion.div>
       </div>
-    // </div>
+    </div>
   );
 }

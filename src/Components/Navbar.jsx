@@ -8,7 +8,7 @@ function Navbar() {
         
         {/* Logo */}
         <Link className="navbar-brand fw-bold fs-4" to="/">
-          🌿 AKSHARAA 
+          🌿 Sahara National school 
         </Link>
 
         {/* Toggle Button */}
